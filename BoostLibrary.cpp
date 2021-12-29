@@ -11,12 +11,7 @@ Sample Input :
 20, 25
 */
 bool cal(int a, int b) {
-    if ((a == 30 || b == 30) || (a + b == 30)) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return a == 30 || b == 30 || a + b == 30;
 }
 
 int main()
