@@ -1,21 +1,28 @@
-// BoostLibrary.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <boost/align/align.hpp>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+/*
+Write a C++ program to check two given integers, and return true if one of them is 30 or if their sum is 30. Go to the editor
+Sample Input :
+30, 0
+25, 5
+20, 30
+20, 25
+*/
+bool cal(int a, int b) {
+    if ((a == 30 || b == 30) || (a + b == 30)) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+int main()
+{
+    std::cout << cal(30, 0) << std::endl;
+    std::cout << cal(25, 5) << std::endl;
+    std::cout << cal(20, 30) << std::endl;
+    std::cout << cal(20, 25) << std::endl;
+}
