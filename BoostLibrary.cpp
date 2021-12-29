@@ -1,23 +1,29 @@
 #include <iostream>
-#include <boost/align/align.hpp>
+#include <boost/array.hpp>
+#include <cmath>
 
 
 /*
-Write a C++ program to check two given integers, and return true if one of them is 30 or if their sum is 30. Go to the editor
-Sample Input :
-30, 0
-25, 5
-20, 30
-20, 25
+4. Write a C++ program to check a given integer 
+and return true if it is within 10 of 100 or 200. Go to the editor
+Sample Input:
+103
+90
+89
+Sample Output:
+1
+1
+0
 */
-bool cal(int a, int b) {
-    return a == 30 || b == 30 || a + b == 30;
+bool cal(int n) {
+	//this mean 90<= a and 110>=0
+	return abs(100 - n) <= 10 || abs(200 - n) <= 10;
+	//return (abs(100 - n) || abs(200 - n)) <= 10;
 }
 
 int main()
 {
-    std::cout << cal(30, 0) << std::endl;
-    std::cout << cal(25, 5) << std::endl;
-    std::cout << cal(20, 30) << std::endl;
-    std::cout << cal(20, 25) << std::endl;
+	std::cout << cal(103) << std::endl;
+	std::cout << cal(90) << std::endl;
+	std::cout << cal(89) << std::endl;
 }
