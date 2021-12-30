@@ -1,29 +1,33 @@
 #include <iostream>
-#include <boost/array.hpp>
 #include <cmath>
+#include <string>
+#include <iostream>
+#include <boost/algorithm/string.hpp>
 
 
 /*
-4. Write a C++ program to check a given integer 
-and return true if it is within 10 of 100 or 200. Go to the editor
+5. Write a C++ program to create a new string where 'if' is added to the front of a given string. 
+If the string already begins with 'if', return the string unchanged. Go to the editor
 Sample Input:
-103
-90
-89
+"if else"
+"else"
 Sample Output:
-1
-1
-0
+if else
+if else
 */
-bool cal(int n) {
-	//this mean 90<= a and 110>=0
-	return abs(100 - n) <= 10 || abs(200 - n) <= 10;
-	//return (abs(100 - n) || abs(200 - n)) <= 10;
+std::string cal(std::string n) {
+	//string direct initialization
+	std::string result("if") ;
+	if (boost::contains(n, result)) {
+		return n;
+	}
+	else {
+		return result + " " + n; 
+	}
 }
 
 int main()
 {
-	std::cout << cal(103) << std::endl;
-	std::cout << cal(90) << std::endl;
-	std::cout << cal(89) << std::endl;
+	std::cout << cal("if else") << std::endl;
+	std::cout << cal("else") << std::endl;
 }
