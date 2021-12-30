@@ -3,40 +3,46 @@
 #include <string>
 #include <iostream>
 #include <boost/algorithm/string.hpp>
+#include <sstream>
+#include <algorithm>
+#include <string>
+#include <iterator>
 
 
 /*
-7. Write a C++ program to exchange the first 
-and last characters in a given string and return the new string. Go to the editor
+8. Write a C++ program to create a new string which is 4 copies of the 2 front characters of a given string. 
+If the given string length is less than 2 return the original string. Go to the editor
 Sample Input:
-"abcd"
+"C Sharp"
+"JS"
 "a"
-"xy"
-Sample output:
-dbca
+Sample Output:
+C C C C
+JSJSJSJS
 a
-yx
 */
 std::string process(std::string s) {
-    char temp;
-	std::string result = "";
-	if (s.length() == 1) {
+	
+	if (s.length() < 2) {
 		return s;
 	}
-	else {
-		temp = s[0];
-		s[0] = s[s.length()-1];
-		s[s.length()-1] = temp;
-		//std::swap(s[0], s[s.length() - 1]);
-		return s;
-	}
-
+	//else {
+	//	std::string result;
+	//	for (int i = 0; i < 4; i++)
+	//	{
+	//		result += s.substr(0, 2);
+	//	}
+	//	return result;
+	//}
+	std::ostringstream repeated;
+	std::fill_n(std::ostream_iterator<std::string>(repeated), 4, s.substr(0, 2));
+	return repeated.str();
 }
 
 int main()
 {
-	std::cout << process("abcd") << std::endl;
+	std::cout << process("C sharp") << std::endl;
+	std::cout << process("JS") << std::endl;
 	std::cout << process("a") << std::endl;
-	std::cout << process("xy") << std::endl;
 	return 0;
 }
