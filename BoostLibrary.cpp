@@ -6,28 +6,34 @@
 
 
 /*
-5. Write a C++ program to create a new string where 'if' is added to the front of a given string. 
-If the string already begins with 'if', return the string unchanged. Go to the editor
+6. Write a C++ program to remove the character in a given position of a given string. 
+The given position will be in the range 0..string length -1 inclusive. Go to the editor
 Sample Input:
-"if else"
-"else"
+"Python", 1
+"Python", 0
+"Python", 4
 Sample Output:
-if else
-if else
+Pthon
+ython
+Pythn
 */
-std::string cal(std::string n) {
-	//string direct initialization
-	std::string result("if") ;
-	if (boost::contains(n, result)) {
-		return n;
+void process(std::string s, int index) {
+	/*std::string result = "";
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (i != index) {
+			result += s[i];
+		}
 	}
-	else {
-		return result + " " + n; 
-	}
+	std::cout << result << std::endl;*/
+
+	std::cout << s.erase(index, 1) << std::endl;
 }
 
 int main()
 {
-	std::cout << cal("if else") << std::endl;
-	std::cout << cal("else") << std::endl;
+	process("Python", 1);
+	process("Python", 0);
+	process("Python", 4);
+	return 0;
 }
