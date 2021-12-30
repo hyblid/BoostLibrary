@@ -10,39 +10,26 @@
 
 
 /*
-8. Write a C++ program to create a new string which is 4 copies of the 2 front characters of a given string. 
-If the given string length is less than 2 return the original string. Go to the editor
+9. Write a C++ program to create a new string with the last char added at the front
+and back of a given string of length 1 or more. Go to the editor
 Sample Input:
-"C Sharp"
-"JS"
-"a"
+"Red"
+"Green"
+"1"
 Sample Output:
-C C C C
-JSJSJSJS
-a
+dRedd
+nGreenn
+111
 */
 std::string process(std::string s) {
-	
-	if (s.length() < 2) {
-		return s;
-	}
-	//else {
-	//	std::string result;
-	//	for (int i = 0; i < 4; i++)
-	//	{
-	//		result += s.substr(0, 2);
-	//	}
-	//	return result;
-	//}
-	std::ostringstream repeated;
-	std::fill_n(std::ostream_iterator<std::string>(repeated), 4, s.substr(0, 2));
-	return repeated.str();
+	auto lastLetter = s.end() - 1;
+	return *lastLetter + s + *lastLetter;
 }
 
 int main()
 {
-	std::cout << process("C sharp") << std::endl;
-	std::cout << process("JS") << std::endl;
-	std::cout << process("a") << std::endl;
+	std::cout << process("Red") << std::endl;
+	std::cout << process("Green") << std::endl;
+	std::cout << process("1") << std::endl;
 	return 0;
 }
