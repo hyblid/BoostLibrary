@@ -2,7 +2,7 @@
 #include <cmath>
 #include <string>
 #include <iostream>
-#include <boost/algorithm/string.hpp>
+#include <boost/assert.hpp>
 #include <sstream>
 #include <algorithm>
 #include <string>
@@ -10,26 +10,28 @@
 
 
 /*
-9. Write a C++ program to create a new string with the last char added at the front
-and back of a given string of length 1 or more. Go to the editor
-Sample Input:
-"Red"
-"Green"
-"1"
+10. Write a C++ program to check if a given positive number is a multiple of 3 or a multiple of 7. Go to the editor
+Sample Input
+3
+14
+12
+37
 Sample Output:
-dRedd
-nGreenn
-111
+1
+1
+1
+0
 */
-std::string process(std::string s) {
-	auto lastLetter = s.end() - 1;
-	return *lastLetter + s + *lastLetter;
+bool process(int s) {
+	BOOST_ASSERT_MSG(s > 0, "should be positive");
+	return (s % 3 == 0) || (s % 7 == 0);
 }
 
 int main()
 {
-	std::cout << process("Red") << std::endl;
-	std::cout << process("Green") << std::endl;
-	std::cout << process("1") << std::endl;
+	std::cout << process(3) << std::endl;
+	std::cout << process(14) << std::endl;
+	std::cout << process(27) << std::endl;
+	std::cout << process(37) << std::endl;
 	return 0;
 }
