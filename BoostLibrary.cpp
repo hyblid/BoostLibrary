@@ -10,24 +10,24 @@
 
 
 /*
-12. Write a C++ program to check if a given string starts with 'C#' or not. Go to the editor
+14. Write a C++ program to check two given integers whether either of them is in the range 100..200 inclusive. Go to the editor
 Sample Input:
-"C++ Sharp"
-"C#"
-"C++"
+100, 199
+250, 300
+105, 190
 Sample Output:
 1
-1
 0
+1
 */
-bool process(std::string s) {
-	return boost::starts_with(s, "C#");
+bool process(int a, int b) {
+	return (a > 100 && a < 200) || (b > 100 && b < 200);
 }
 
 int main()
 {
-	std::cout << process("C# Sharp") << std::endl;
-	std::cout << process("C#") << std::endl;
-	std::cout << process("C++") << std::endl;
+	std::cout << process(100, 199) << std::endl;
+	std::cout << process(250, 300) << std::endl;
+	std::cout << process(105, 190) << std::endl;
 	return 0;
 }
