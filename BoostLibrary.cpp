@@ -6,34 +6,37 @@
 
 
 /*
-6. Write a C++ program to remove the character in a given position of a given string. 
-The given position will be in the range 0..string length -1 inclusive. Go to the editor
+7. Write a C++ program to exchange the first 
+and last characters in a given string and return the new string. Go to the editor
 Sample Input:
-"Python", 1
-"Python", 0
-"Python", 4
-Sample Output:
-Pthon
-ython
-Pythn
+"abcd"
+"a"
+"xy"
+Sample output:
+dbca
+a
+yx
 */
-void process(std::string s, int index) {
-	/*std::string result = "";
-	for (int i = 0; i < s.length(); i++)
-	{
-		if (i != index) {
-			result += s[i];
-		}
+std::string process(std::string s) {
+    char temp;
+	std::string result = "";
+	if (s.length() == 1) {
+		return s;
 	}
-	std::cout << result << std::endl;*/
+	else {
+		temp = s[0];
+		s[0] = s[s.length()-1];
+		s[s.length()-1] = temp;
+		//std::swap(s[0], s[s.length() - 1]);
+		return s;
+	}
 
-	std::cout << s.erase(index, 1) << std::endl;
 }
 
 int main()
 {
-	process("Python", 1);
-	process("Python", 0);
-	process("Python", 4);
+	std::cout << process("abcd") << std::endl;
+	std::cout << process("a") << std::endl;
+	std::cout << process("xy") << std::endl;
 	return 0;
 }
