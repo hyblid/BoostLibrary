@@ -10,24 +10,28 @@
 
 
 /*
-14. Write a C++ program to check two given integers whether either of them is in the range 100..200 inclusive. Go to the editor
+15. Write a C++ program to check whether three given integer values are in the range 20..50 inclusive.
+Return true if 1 or more of them are in the said range otherwise false. Go to the editor
 Sample Input:
-100, 199
-250, 300
-105, 190
+11, 20, 12
+30, 30, 17
+25, 35, 50
+15, 12, 8
 Sample Output:
 1
-0
 1
+1
+0
 */
-bool process(int a, int b) {
-	return (a > 100 && a < 200) || (b > 100 && b < 200);
+bool process(int a, int b, int c) {
+	return (a >= 20 && a <= 50) || (b >= 20 && b <= 50) || (c >= 20 && c <= 50);
 }
 
 int main()
 {
-	std::cout << process(100, 199) << std::endl;
-	std::cout << process(250, 300) << std::endl;
-	std::cout << process(105, 190) << std::endl;
+	std::cout << process(11, 20, 12) << std::endl;
+	std::cout << process(30, 30, 17) << std::endl;
+	std::cout << process(25, 35, 50) << std::endl;
+	std::cout << process(15, 12, 8) << std::endl;
 	return 0;
 }
