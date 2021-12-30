@@ -2,7 +2,7 @@
 #include <cmath>
 #include <string>
 #include <iostream>
-#include <boost/assert.hpp>
+#include <boost/algorithm/string.hpp>
 #include <sstream>
 #include <algorithm>
 #include <string>
@@ -10,31 +10,24 @@
 
 
 /*
-11. Write a C++ program to create a new string taking the first 3 characters of a given string
-and return the string with the 3 characters added at both the front and back.
-If the given string length is less than 3, use whatever characters are there. Go to the editor
+12. Write a C++ program to check if a given string starts with 'C#' or not. Go to the editor
 Sample Input:
-"Python"
-"JS"
-"Code"
+"C++ Sharp"
+"C#"
+"C++"
 Sample Output:
-PytPythonPyt
-JSJSJS
-CodCodeCod
+1
+1
+0
 */
-std::string process(std::string s) {
-	if (s.length() < 3) {
-		return s + s + s;
-	}
-	else {
-		return s.substr(0, 3) + s + s.substr(0, 3);
-	}
+bool process(std::string s) {
+	return boost::starts_with(s, "C#");
 }
 
 int main()
 {
-	std::cout << process("Python") << std::endl;
-	std::cout << process("JS") << std::endl;
-	std::cout << process("Code") << std::endl;
+	std::cout << process("C# Sharp") << std::endl;
+	std::cout << process("C#") << std::endl;
+	std::cout << process("C++") << std::endl;
 	return 0;
 }
