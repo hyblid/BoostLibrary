@@ -10,28 +10,31 @@
 
 
 /*
-10. Write a C++ program to check if a given positive number is a multiple of 3 or a multiple of 7. Go to the editor
-Sample Input
-3
-14
-12
-37
+11. Write a C++ program to create a new string taking the first 3 characters of a given string
+and return the string with the 3 characters added at both the front and back.
+If the given string length is less than 3, use whatever characters are there. Go to the editor
+Sample Input:
+"Python"
+"JS"
+"Code"
 Sample Output:
-1
-1
-1
-0
+PytPythonPyt
+JSJSJS
+CodCodeCod
 */
-bool process(int s) {
-	BOOST_ASSERT_MSG(s > 0, "should be positive");
-	return (s % 3 == 0) || (s % 7 == 0);
+std::string process(std::string s) {
+	if (s.length() < 3) {
+		return s + s + s;
+	}
+	else {
+		return s.substr(0, 3) + s + s.substr(0, 3);
+	}
 }
 
 int main()
 {
-	std::cout << process(3) << std::endl;
-	std::cout << process(14) << std::endl;
-	std::cout << process(27) << std::endl;
-	std::cout << process(37) << std::endl;
+	std::cout << process("Python") << std::endl;
+	std::cout << process("JS") << std::endl;
+	std::cout << process("Code") << std::endl;
 	return 0;
 }
