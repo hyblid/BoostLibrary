@@ -1,37 +1,40 @@
 #include <iostream>
-#include <cmath>
-#include <string>
-#include <iostream>
-#include <boost/algorithm/string.hpp>
+#include <boost/regex.hpp>
 #include <sstream>
 #include <algorithm>
 #include <string>
 #include <iterator>
+#include <vector>
+#include <regex>
+#include <boost/range/algorithm/count.hpp>
 
 
 /*
-15. Write a C++ program to check whether three given integer values are in the range 20..50 inclusive.
-Return true if 1 or more of them are in the said range otherwise false. Go to the editor
+41. Write a C++ program to check if a given number is within 2 of a multiple of 10. Go to the editor
 Sample Input:
-11, 20, 12
-30, 30, 17
-25, 35, 50
-15, 12, 8
+3
+7
+8
+21
 Sample Output:
-1
-1
-1
 0
+0
+1
+1
 */
-bool process(int a, int b, int c) {
-	return (a >= 20 && a <= 50) || (b >= 20 && b <= 50) || (c >= 20 && c <= 50);
+
+bool process(int a) {
+	//10+2 =12 
+	//10-2 =8
+
+	return (a%10) <=2 || (a%10) >= 8 ? true : false;
 }
 
-int main()
-{
-	std::cout << process(11, 20, 12) << std::endl;
-	std::cout << process(30, 30, 17) << std::endl;
-	std::cout << process(25, 35, 50) << std::endl;
-	std::cout << process(15, 12, 8) << std::endl;
+int main() {
+	std::cout << process(3) << std::endl;
+	std::cout << process(7) << std::endl;
+	std::cout << process(8) << std::endl;
+	std::cout << process(21) << std::endl;
 	return 0;
 }
+
