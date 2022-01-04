@@ -7,34 +7,40 @@
 #include <vector>
 #include <regex>
 #include <boost/range/algorithm/count.hpp>
-
+#include <math.h>
 
 /*
-41. Write a C++ program to check if a given number is within 2 of a multiple of 10. Go to the editor
+53. Write a C++ program to compute the sum of the three integers. 
+If one of the values is 13 then do not count it and its right towards the sum. Go to the editor
 Sample Input:
-3
-7
-8
-21
+4, 5, 7
+7, 4, 12
+10, 13, 12
+13, 12, 18
 Sample Output:
+16
+23
+10
 0
-0
-1
-1
 */
 
-bool process(int a) {
-	//10+2 =12 
-	//10-2 =8
-
-	return (a%10) <=2 || (a%10) >= 8 ? true : false;
+int process(int a, int b, int c) {
+	if (a == 13) {
+		return 0;
+	} else if (b == 13 ) {
+		return a;
+	} else if (c == 13) {
+		return a + b;
+	} else {
+		return a + b + c;
+	}
 }
 
 int main() {
-	std::cout << process(3) << std::endl;
-	std::cout << process(7) << std::endl;
-	std::cout << process(8) << std::endl;
-	std::cout << process(21) << std::endl;
+	std::cout << process(4, 5, 7) << std::endl;
+	std::cout << process(7, 4, 12) << std::endl;
+	std::cout << process(10, 13, 12) << std::endl;
+	std::cout << process(13, 12, 18) << std::endl;
 	return 0;
 }
 
