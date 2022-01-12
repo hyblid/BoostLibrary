@@ -6,41 +6,54 @@
 #include <iterator>
 #include <vector>
 #include <regex>
-#include <boost/range/algorithm/count.hpp>
-#include <math.h>
+#include <cmath>
+#include <numeric>
+#include <cassert>
+#include <array>
+using namespace std;
 
 /*
-53. Write a C++ program to compute the sum of the three integers. 
-If one of the values is 13 then do not count it and its right towards the sum. Go to the editor
-Sample Input:
-4, 5, 7
-7, 4, 12
-10, 13, 12
-13, 12, 18
-Sample Output:
-16
-23
-10
-0
+2. Write a C++ program to change every letter in a given string with the letter following it in the alphabet
+(ie. a becomes b, p becomes q, z becomes a). Go to the editor
+Example:
+Sample Input: w3resource
+Sample Output: x3sftpvsdf
 */
 
-int process(int a, int b, int c) {
-	if (a == 13) {
-		return 0;
-	} else if (b == 13 ) {
-		return a;
-	} else if (c == 13) {
-		return a + b;
-	} else {
-		return a + b + c;
+void process(const string s) {
+	string v = "";
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (std::isdigit(s[i])) {
+			v += s[i];
+		}
+		else if ((65 <= int(s[i]) && int(s[i] >= 90)) || (97 <= int(s[i]) && int(s[i] >= 122))) {
+			//A-Z 65-90
+			//a-z 97-122
+			v += s[i] + 1;
+		}
+	}
+
+	for (auto& i : v)
+	{
+		cout << i;
+	}
+}
+
+void processC(const char* s, size_t size) {
+	for (size_t i = 0; i < size; i++)
+	{
+		cout << s[i];
 	}
 }
 
 int main() {
-	std::cout << process(4, 5, 7) << std::endl;
-	std::cout << process(7, 4, 12) << std::endl;
-	std::cout << process(10, 13, 12) << std::endl;
-	std::cout << process(13, 12, 18) << std::endl;
+	char c[]{ 'W','3','r','e','s','o','u','r','c','e' };
+	size_t csize = sizeof(c) / sizeof(c[0]);
+	processC(c, csize);
+	process("W3resource");
 	return 0;
 }
+
+
 
