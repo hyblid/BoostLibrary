@@ -10,50 +10,78 @@
 #include <numeric>
 #include <cassert>
 #include <array>
+#include <boost/algorithm/string/find.hpp>
+#include <cstdlib>
+
 using namespace std;
-
+//65-90 & 97-122
 /*
-2. Write a C++ program to change every letter in a given string with the letter following it in the alphabet
-(ie. a becomes b, p becomes q, z becomes a). Go to the editor
+15. Write a C++ program to convert a given non-negative integer to English words. Go to the editor
 Example:
-Sample Input: w3resource
-Sample Output: x3sftpvsdf
+Sample Input: 12
+Sample Output: Twelve
+Sample Input: 29
+Sample Output: Twenty Nine
 */
+static string belowTwenty[] = { "Zero","One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+				 "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+				 "Seventeen", "Eighteen", "Nineteen" };
+//empty for zero and hundred
+static string belowHundred[] = { "","", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
-void process(const string s) {
-	string v = "";
-	for (int i = 0; i < s.length(); i++)
-	{
-		if (std::isdigit(s[i])) {
-			v += s[i];
-		}
-		else if ((65 <= int(s[i]) && int(s[i] >= 90)) || (97 <= int(s[i]) && int(s[i] >= 122))) {
-			//A-Z 65-90
-			//a-z 97-122
-			v += s[i] + 1;
+
+static string overThousand[] = { "Hundred", "Thousand", "Million", "Billion" };
+
+string number_to_words_below_hundred(long long int num) {
+	string result;
+	//base for recursive
+	if (num == 0) {
+		return result;
+	}
+	else if (num < 20) {
+		return belowTwenty[num];
+	}
+	else if (num < 100) {
+		result = belowHundred[num / 10];
+		if (num % 10 > 0) {
+			result += " " + belowTwenty[num % 10];
 		}
 	}
-
-	for (auto& i : v)
-	{
-		cout << i;
+	else {
+		result = belowTwenty[num / 100] + " " + overThousand[0];
+		if (num % 100 > 0) {
+			//recursive
+			result += " " + number_to_words_below_hundred(num % 100);
+		}
 	}
+	return result;
 }
 
-void processC(const char* s, size_t size) {
-	for (size_t i = 0; i < size; i++)
-	{
-		cout << s[i];
+string number_to_words(int num) {
+	vector<string> ret;
+	if (num == 0) return belowTwenty[num];
+
+	for (;num > 0; num = num / 1000) {
+		ret.push_back(number_to_words_below_hundred(num % 1000));
 	}
+
+	string result = ret[0];
+	for (int i = 1; i < ret.size(); i++) {
+		if (ret[i].size() > 0) {
+			if (result.size() > 0) {
+				result = ret[i] + " " + overThousand[i] + " " + result;
+			}
+			else {
+				result = ret[i] + " " + overThousand[i];
+			}
+		}
+
+	}
+	return result;
 }
 
 int main() {
-	char c[]{ 'W','3','r','e','s','o','u','r','c','e' };
-	size_t csize = sizeof(c) / sizeof(c[0]);
-	processC(c, csize);
-	process("W3resource");
+	int num = 1678;
+	cout << "\n" << num << " ->  " << number_to_words(num) << endl;
 	return 0;
 }
-
-
-
