@@ -28,8 +28,6 @@ static string belowTwenty[] = { "Zero","One", "Two", "Three", "Four", "Five", "S
 				 "Seventeen", "Eighteen", "Nineteen" };
 //empty for zero and hundred
 static string belowHundred[] = { "","", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
-
-
 static string overThousand[] = { "Hundred", "Thousand", "Million", "Billion" };
 
 string number_to_words_below_hundred(long long int num) {
@@ -60,11 +58,11 @@ string number_to_words_below_hundred(long long int num) {
 string number_to_words(int num) {
 	vector<string> ret;
 	if (num == 0) return belowTwenty[num];
-
+	//for under one hundred
 	for (;num > 0; num = num / 1000) {
 		ret.push_back(number_to_words_below_hundred(num % 1000));
 	}
-
+	//for over one hundred
 	string result = ret[0];
 	for (int i = 1; i < ret.size(); i++) {
 		if (ret[i].size() > 0) {
@@ -82,6 +80,6 @@ string number_to_words(int num) {
 
 int main() {
 	int num = 1678;
-	cout << "\n" << num << " ->  " << number_to_words(num) << endl;
+	cout << num << " ->  " << number_to_words(1678) << endl;
 	return 0;
 }
